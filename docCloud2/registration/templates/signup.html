@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+
+
+
+{%block navbar %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card border-info">
+      <div class="card-header bg-info text-white">
+        <h4 class="mb-0 ">SignUp</h4>
+      </div>
+      <div class="card-body">
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-info ">Sign Up</button>
+          <a class="btn btn-outline-info" href="{% url 'login'%}">Login</a>
+          <a class="btn btn-secondary" href="{% url 'index'%}">Home</a>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+{%endblock %}

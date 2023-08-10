@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+<div class="pt-5 pb-5 " >
+    <div class="container ">
+        <h2 class="text-info">All Our Services:</h2>
+        <div class="row mt-4">
+            <div class="col-md border border-info ml-4 py-2">
+                <a href="{% url 'list_container'%}"> <h5 class="text-info ">list all container</h5></a>
+            </div>
+            <div class="col-md border border-info ml-4 py-2">
+                <a href="{%url 'list_images'%}"> <h5 class="text-info ">list all Images </h5></a>
+            </div>
+            <div class="col-md border border-info ml-4 py-2">
+                <a href=""> <h5 class="text-info ">Edit Profile</h5></a>
+            </div>
+            {% if user.is_superuser %}
+            <div class="col-md border border-info ml-4 py-2">
+                <a href="{% url 'list_logs'%}"> <h5 class="text-info ">List Logs</h5></a>
+                <a href="{% url 'users_info'%}">User Details </a>
+            </div>
+            {%endif%}
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

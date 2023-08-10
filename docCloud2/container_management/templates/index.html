@@ -1,0 +1,117 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid  border-bottom bg-light">
+    <div class="container">
+      <h1 class="display-4 text-info" id="dynamic-text">Welcome to Our Docker-Based Treatment Service</h1>
+      <p class="lead">We provide a reliable and scalable solution for all your container needs.</p>
+      <a href="#" class="btn btn-primary btn-lg">Get Started</a>
+    </div>
+  </div>
+  
+
+
+  <div class="container" >
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="d-none d-md-block animated-text">Easy to Use</h2>
+        <p>Our platform allows you to easily manage your Docker containers for treatment purposes. You don't need to worry about setting up and maintaining your own infrastructure.</p>
+      </div>
+      <div class="col-md-4">
+        <h2 class="d-none d-md-block animated-text">Flexible</h2>
+        <p>You have full control over the resources allocated to each container, so you can customize your treatment environment to fit your specific requirements.</p>
+      </div>
+      <div class="col-md-4">
+        <h2 class="d-none d-md-block animated-text">Secure</h2>
+        <p>We take security seriously and have implemented measures to ensure your data is protected at all times.</p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <section id="about-us" class="bg-light mt-5 ">
+    <div class="container py-5">
+      <div class="">
+          <h2 class="text-center animated-text">About Us</h2>
+          <p class="text-center">We are a team of passionate professionals dedicated to providing the best possible treatment services using Docker containers. Our mission is to make it easy for everyone to access the benefits of containerization, without having to worry about the technical details.
+            <br><br>
+            With our platform, you can create, manage, and scale your treatment environments quickly and easily. We offer flexible plans that can be tailored to meet your specific needs, whether you're an individual or an enterprise.
+            <br><br>
+            Contact us today to learn more about how we can help you improve your treatment workflows with Docker containers.
+          </p>
+      </div>
+    </div>
+  </section>
+ 
+
+  <section  class="py-5 border-top" id="contact-us">
+    <div class="container ">
+      <h2 class="text-center animated-text ">Contact Us</h2>
+      <form action="">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="email" class="form-control"  id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">message:</label>
+          <textarea class="form-control" rows="5" id="message" name="message" required></textarea>
+        </div> 
+
+
+
+        <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+      </form> 
+    </div>
+  </section>
+  
+
+
+  <footer style="text-align: center;padding: 20px ;"  class="bg-light border-top">
+    <p class="animated-text">Copyright &copy; 2023 My Company</p>
+  </footer>
+  <script>
+    var dynamicText = $('#dynamic-text');
+    var textArray = [
+      'Welcome to Our Docker-Based Treatment Service',
+      'The Best Way to Manage Your Containers',
+      'Scalable, Flexible, and Secure'
+    ];
+    var index = 0;
+    setInterval(function() {
+      dynamicText.fadeOut(function() {
+        dynamicText.text(textArray[index++ % textArray.length]).fadeIn();
+      });
+    }, 3000);
+
+    
+  </script>
+   <script>
+    $(document).ready(function() {
+      // Animate text
+      $('.animated-text').each(function() {
+        var text = $(this).text();
+        $(this).empty();
+        for (var i = 0; i < text.length; i++) {
+          $(this).append('<span style="opacity: 0;">' + text.charAt(i) + '</span>');
+        }
+        var delay = 0;
+        $(this).find('span').each(function() {
+          $(this).delay(delay).animate({opacity: 1}, 1000);
+          delay += 50;
+        });
+      });
+    });
+  </script>
+
+
+{% endblock %}
+

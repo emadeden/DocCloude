@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% block content %}
+    <div class="mt-5 container ">
+        <h3 class="text-info">User Detail</h3>
+        <div class="pt-3 text-secondary pl-4">
+            <div  class="mb-2" style="display: flex; justify-content: space-between;">
+                <h5 class="text-dark">User Name:</h5>
+                 <h5 class="border p-3 " style="border-radius: 20px;"> {{user.username }} </span></h5>
+                 
+            </div> 
+            <div  class="mb-2" style="display: flex; justify-content: space-between;">
+                <h5 class="text-dark">Email:</h5>
+                <h5 class="border p-3 " style="border-radius: 20px;"> {{user.email }} </span></h5>
+            </div>
+            <div class="mb-5">
+                <h5 class="text-dark">Container:</h5>
+                <ul>
+                    {% for container in containers %}
+                    <li>
+                        <button class="btn " data-toggle="collapse" data-target="#{{container.name}}">{{container.name}}</button>
+                        <div id="{{container.name}}" class="collapse">
+                            <div>
+                                Image: {{container.image.name}}
+                            </div>
+                            <div>
+                                Status: {{container.status}}
+                            </div>
+                            <div>
+                                Ip Address: {{container.ip_address}}
+                            </div>
+                            <div>
+                                Created At: {{container.created_at}}
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <a href="{% url 'delete_user' user.pk%}" class="btn btn-danger"> Delete User </a>
+        </div>
+        
+    </div>
+{% endblock %}
+

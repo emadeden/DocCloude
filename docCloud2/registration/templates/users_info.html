@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container mt-5">
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="text-info">Username</th>
+          <th class="text-info">Email</th>
+          <th class="text-info">Containers number</th>
+          <th class="text-info">Status</th>
+          <th class="text-info">Date joined</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td class="text-info"><a href="{% url 'user_detail' user.id%}">{{user.username}}</a></td>
+          <td class="text-info">{{user.email}}</td>
+          <td class="text-info">{{user.containers.all.count}}</td>
+          <td class="text-info">{{user.is_superuser}}</td>
+          <td class="text-info">{{user.date_joined}}</td>
+          
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+  </div>
+
+
+{%endblock%}
